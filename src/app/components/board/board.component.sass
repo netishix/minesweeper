@@ -1,0 +1,51 @@
+.board-row
+  display: flex
+  flex-direction: row
+  justify-content: center
+
+.board-cell
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  width: 40px
+  height: 40px
+  border-style: solid
+  border-width: 2px
+  border-top-color: #FFF
+  border-left-color: #FFF
+  border-right-color: #646363
+  border-bottom-color: #646363
+
+.board-cell.hidden
+  background-color: rgba(0, 128, 255, 0.7)
+  cursor: crosshair
+
+.board-cell.hidden:hover
+  background-color: #7E98AB
+
+.board-cell.visible
+  background-color: #ACB3B8
+  cursor: default
+
+.bomb-exploded
+  color: #b82525
+
+.flag
+  color: red
+
+.question
+  color: yellow
+
+.nearby-bombs.n1
+  color: #0f0fd9
+
+.nearby-bombs.n2
+  color: #1c641c
+
+.nearby-bombs.n3
+  color: #991515
+
+.nearby-bombs.n4, .nearby-bombs.n5, .nearby-bombs.n6, .nearby-bombs.n7, .nearby-bombs.n8
+  color: #8d0bf1
+

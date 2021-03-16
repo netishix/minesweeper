@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-12">
+      <div id="game-header" class="row mb-5">
+        <div class="col-12 offset-md-3 col-md-6">
+          <div class="row">
+            <div id="bombs-left" class="col-3 text-center" [ngClass]="{'finished': game.stats.finished}">
+              <p>Bombs left</p>
+              <h2 class="text-danger font-weight-bold">{{game.board.bombsLeft}}</h2>
+            </div>
+            <div class="col-6 text-center">
+              <h2>
+                <span *ngIf="!game.stats.finished && !game.stats.won">
+                  <fa-icon *ngIf="!isEmojiFaceBlinking" class="text-primary" [icon]="icons.faSmileBeam"></fa-icon>
+                  <fa-icon *ngIf="isEmojiFaceBlinking" class="text-warning" [icon]="icons.faFlushed"></fa-icon>
+                </span>
+                <span *ngIf="game.stats.finished && game.stats.won" class="text-success">
+                  You WON!
+                </span>
+                <span *ngIf="game.stats.finished && !game.stats.won" class="text-danger">
+                  GAME <fa-icon [icon]="icons.faSadCry"></fa-icon>VER
+                </span>
+              </h2>
+            </div>
+            <div id="time-spent" class="col-3 text-center" [ngClass]="{'finished': game.stats.finished}">
+              <p>Time spent</p>
+              <h2 class="text-danger font-weight-bold">{{game.stats.timeSpent}}</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-center">
+              <a routerLink="/" class="btn btn-outline-primary mr-2"><fa-icon class="mr-2" [icon]="icons.faArrowLeft"></fa-icon>Back to menu</a>
+              <ng-container *ngIf="game.stats.finished">
+                <a routerLink="/stats" class="btn btn-outline-primary mr-2"><fa-icon class="mr-2" [icon]="icons.faTachometerAlt"></fa-icon>Stats</a>
+                <button class="btn btn-success" (click)="newGame()"><fa-icon class="mr-2" [icon]="icons.faPlay"></fa-icon>Play again</button>
+              </ng-container>
+              <ng-container *ngIf="!game.stats.finished">
+                <button class="btn btn-success" (click)="restartGame()"><fa-icon class="mr-2" [icon]="icons.faRedo"></fa-icon>Restart</button>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+            <app-board [board]="game.board" (onOpenCell)="blinkFaceEmoji()" (onFinish)="finishGame($event)"></app-board>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

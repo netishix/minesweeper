@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title text-secondary">New game</h4>
+  <button type="button" class="close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="form.fg">
+    <div class="form-group row mb-3">
+      <label for="level" class="col-4 col-md-2 col-form-label">Level</label>
+      <div class="col-7 col-md-5">
+        <select class="form-control" id="level" formControlName="level">
+          <option disabled>Select a level</option>
+          <option *ngFor="let level of form.selectOptions.level" [ngValue]="level.value">{{level.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row mb-3">
+      <label for="level" class="col-5 col-md-2 col-form-label">Size</label>
+      <div class="input-group col-7 col-md-6">
+        <input type="text" class="form-control text-center" placeholder="X Cells" formControlName="xCells" [readOnly]="!isCustomLevel()">
+        <div class="input-group-prepend input-group-append">
+          <span class="input-group-text" id="basic-addon2">x</span>
+        </div>
+        <input type="text" class="form-control text-center" placeholder="Y Cells" formControlName="yCells" [readOnly]="!isCustomLevel()">
+      </div>
+    </div>
+    <div class="form-group row mb-3">
+      <label for="level" class="col-5 col-md-2 col-form-label">Bombs </label>
+      <div class="col-7 col-md-5">
+        <input type="text" class="form-control text-center" placeholder="Number of bombs" formControlName="totalBombs" [readOnly]="!isCustomLevel()">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-success" (click)="submitForm()">Create game</button>
+</div>
