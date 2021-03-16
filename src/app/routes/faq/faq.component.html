@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row py-5">
+    <div class="col-12">
+      <div class="row mb-5">
+        <div class="col-12">
+          <h3 class="text-secondary border-bottom pb-2 mb-4">Frecuently Asked Questions:</h3>
+          <ngb-accordion [closeOthers]="true">
+            <ngb-panel title="About the game">
+              <ng-template ngbPanelContent>
+                <p>
+                  The EOS Wall project was born as a proof of concept of EOS DAPP.
+                  <br> Every user that has an EOS account can buy a portion of the wall called
+                  <span class="font-weight-bold">slot</span>. A slot is composed by a title, an image and an url to redirect when the slot is clicked.
+                  <br> All the slots are stored in the EOS blockchain and can be updated at anytime by it's owners.
+                </p>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="¿How can I win?">
+              <ng-template ngbPanelContent>
+                <p>
+                  The price of a slot is calculated with the following formula:
+                  <br>
+                  <span class="font-weight-bold">
+                    <span class="badge badge-primary">Slot price</span> =
+                    <span class="badge badge-info">Pixel price</span> x
+                    <span class="badge badge-info">Slot pixels</span>
+                  </span>
+                </p>
+                <hr>
+                <p>
+                  The pixel price will change over time automatically depending on the total pixels that had been sold. It is calculated with the following lineal
+                  functions:
+                </p>
+                <ul>
+                  <li class="font-weight-bold mb-4">
+                    When, sold pixels <= 800,000 pixels, then:
+                    <br>
+                    <span class="badge badge-primary">Pixel price</span> =
+                    <span class="badge badge-info">0.0015 EOS</span> /
+                    <span class="badge badge-info">1,000,000 pixels</span> x
+                    <span class="badge badge-info">Pixels sold</span> +
+                    <span class="badge badge-info">0.0005 EOS</span>
+                  </li>
+                  <li class="font-weight-bold"> When, sold pixels > 800,000 pixels, then:
+                    <br>
+                    <span class="badge badge-primary">Pixel price</span> =
+                    <span class="badge badge-info">0.003 EOS</span> /
+                    <span class="badge badge-info">1,000,000 pixels</span> x
+                    <span class="badge badge-info">Pixels sold</span> +
+                    <span class="badge badge-info">0.0005 EOS</span>
+                  </li>
+                </ul>
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="¿How can I loose?">
+              <ng-template ngbPanelContent>
+                The RAM for every new slot stored in the wall is payed by the smart contract itself.
+              </ng-template>
+            </ngb-panel>
+            <ngb-panel title="¿Flags and Question marks?">
+              <ng-template ngbPanelContent>
+                The RAM for every new slot stored in the wall is payed by the smart contract itself.
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

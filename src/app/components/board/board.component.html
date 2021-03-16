@@ -1,0 +1,23 @@
+<div id="board">
+  <div class="board-row" *ngFor="let row of board.grid">
+    <div class="board-cell" *ngFor="let cell of row" [ngClass]="cell.hidden ? 'hidden' : 'visible'"  (contextmenu)="onCellClick($event, cell)" (click)="onCellClick($event, cell)">
+      <ng-container *ngIf="cell.hidden">
+        <ng-container *ngIf="cell.guess === 'question'">
+          <fa-icon class="question" [icon]="icons.faQuestion"></fa-icon>
+        </ng-container>
+        <ng-container *ngIf="cell.guess === 'flag'">
+          <fa-icon class="flag" [icon]="icons.faFlag"></fa-icon>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="!cell.hidden">
+        <ng-container *ngIf="cell.hasBomb">
+          <fa-icon [icon]="icons.faBomb" [ngClass]="{'bomb-exploded': cell.bombExploded}"></fa-icon>
+        </ng-container>
+        <ng-container *ngIf="!cell.hasBomb && cell.nearbyBombs > 0">
+          <span class="nearby-bombs font-weight-bold" [ngClass]="'n'+cell.nearbyBombs.toString()">{{cell.nearbyBombs}}</span>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>
