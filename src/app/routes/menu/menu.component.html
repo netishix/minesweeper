@@ -1,0 +1,88 @@
+<div class="container py-3">
+  <div class="row mb-5">
+    <div class="col-12">
+      <div class="row mb-4">
+        <div class="col-12">
+          <h4 class="text-secondary text-center">Welc
+            <fa-icon [icon]="icons.faBomb"></fa-icon>
+            me to Minesweeper!
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 offset-md-4 col-md-4">
+          <button (click)="newGame()" class="btn btn-success btn-block">Play</button>
+          <div class="btn-group btn-block">
+            <button class="btn btn-outline-primary" disabled>
+              <fa-icon class="mr-2" [icon]="icons.faCog"></fa-icon>
+              Settings
+            </button>
+            <a routerLink="/stats" class="btn btn-outline-primary" >
+              <fa-icon class="mr-2" [icon]="icons.faTachometerAlt"></fa-icon>
+              Statistics
+            </a>
+          </div>
+          <a routerLink="/faq" class="btn btn-outline-secondary btn-block">
+            <fa-icon class="mr-2" [icon]="icons.faQuestion"></fa-icon>
+            How to play
+          </a>
+          <a href="https://github.com/netishix" class="btn btn-outline-secondary btn-block" target="_blank">
+            <fa-icon class="mr-2" [icon]="icons.faGithub"></fa-icon>
+            About</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <h5 class="text-secondary text-center">Active games</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-striped">
+            <thead>
+              <tr class="text-secondary text-center">
+                <th># ID</th>
+                <th>Level</th>
+                <th>Size</th>
+                <th>Bombs</th>
+                <th>Started at</th>
+                <th>Time spent</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let game of activeGames; index as i" class="text-center">
+                <td>{{game.id}}</td>
+                <td>{{game.settings.level}}</td>
+                <td>{{game.settings.xCells}}x{{game.settings.yCells}}</td>
+                <td>{{game.settings.totalBombs}}</td>
+                <td>{{game.stats.startDate | date: 'MM/dd/yyyy HH:mm a'}} </td>
+                <td>{{game.stats.timeSpent < 60 ? game.stats.timeSpent + ' seconds' : (game.stats.timeSpent/60).toFixed(0) + ' minutes'}}</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-success btn-sm" ngbTooltip="Resume" (click)="resumeGame(game.id)">
+                      <fa-icon [icon]="icons.faPlay"></fa-icon>
+                    </button>
+                    <button class="btn btn-danger btn-sm" (click)="removeGame(game.id)" ngbTooltip="Discard game">
+                      <fa-icon [icon]="icons.faTrash"></fa-icon>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr *ngIf="activeGames.length === 0">
+                <td colspan="7" class="text-center">
+                  <p class="mb-2">There are no active games yet. Wanna play?</p>
+                  <button class="btn btn-outline-success" (click)="newGame()">Create a new game!</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
