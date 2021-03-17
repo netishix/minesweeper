@@ -8,58 +8,29 @@
             <ngb-panel title="About the game">
               <ng-template ngbPanelContent>
                 <p>
-                  The EOS Wall project was born as a proof of concept of EOS DAPP.
-                  <br> Every user that has an EOS account can buy a portion of the wall called
-                  <span class="font-weight-bold">slot</span>. A slot is composed by a title, an image and an url to redirect when the slot is clicked.
-                  <br> All the slots are stored in the EOS blockchain and can be updated at anytime by it's owners.
+                  Minesweeper is a single-player puzzle video game. The objective of the game is to clear a rectangular board containing hidden "mines" or bombs without detonating any of them, with help from clues about the number of neighboring mines in each field.
+                  <br>
+                  The game originates from the 1960s, and it has been written for many computing platforms in use today. It has many variations and offshoots.
                 </p>
               </ng-template>
             </ngb-panel>
-            <ngb-panel title="¿How can I win?">
+            <ngb-panel title="¿How do I win?">
               <ng-template ngbPanelContent>
                 <p>
-                  The price of a slot is calculated with the following formula:
-                  <br>
-                  <span class="font-weight-bold">
-                    <span class="badge badge-primary">Slot price</span> =
-                    <span class="badge badge-info">Pixel price</span> x
-                    <span class="badge badge-info">Slot pixels</span>
-                  </span>
+                  To win the game, you must uncover all non-mined cells, at which point, the timer is stopped.
                 </p>
-                <hr>
-                <p>
-                  The pixel price will change over time automatically depending on the total pixels that had been sold. It is calculated with the following lineal
-                  functions:
-                </p>
-                <ul>
-                  <li class="font-weight-bold mb-4">
-                    When, sold pixels <= 800,000 pixels, then:
-                    <br>
-                    <span class="badge badge-primary">Pixel price</span> =
-                    <span class="badge badge-info">0.0015 EOS</span> /
-                    <span class="badge badge-info">1,000,000 pixels</span> x
-                    <span class="badge badge-info">Pixels sold</span> +
-                    <span class="badge badge-info">0.0005 EOS</span>
-                  </li>
-                  <li class="font-weight-bold"> When, sold pixels > 800,000 pixels, then:
-                    <br>
-                    <span class="badge badge-primary">Pixel price</span> =
-                    <span class="badge badge-info">0.003 EOS</span> /
-                    <span class="badge badge-info">1,000,000 pixels</span> x
-                    <span class="badge badge-info">Pixels sold</span> +
-                    <span class="badge badge-info">0.0005 EOS</span>
-                  </li>
-                </ul>
               </ng-template>
             </ngb-panel>
             <ngb-panel title="¿How can I loose?">
               <ng-template ngbPanelContent>
-                The RAM for every new slot stored in the wall is payed by the smart contract itself.
+                You loose when you uncover a mined cell.
               </ng-template>
             </ngb-panel>
             <ngb-panel title="¿Flags and Question marks?">
               <ng-template ngbPanelContent>
-                The RAM for every new slot stored in the wall is payed by the smart contract itself.
+                You can place <i>Flags</i> <<fa-icon class="text-danger" [icon]="icons.faFlag"></fa-icon>> or <i>Question Marks</i> <<fa-icon class="text-warning" [icon]="icons.faQuestion"></fa-icon>> by right clicking a Cell.
+                <br>
+                Flags are useful for flagging suspicious cells that might contain a mine. On the other hand, question marks are useful for flagging cells you are not sure about their underlying content.
               </ng-template>
             </ngb-panel>
           </ngb-accordion>
