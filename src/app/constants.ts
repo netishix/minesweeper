@@ -27,7 +27,8 @@ export const LEVELS = {
   }
 }
 
-export const ALLOWED_RANGE_X_CELLS = [10, 100];
-export const ALLOWED_RANGE_Y_CELLS = [10, 100];
+export const ALLOWED_RANGE_CELLS = [10, 100];
+export const ALLOWED_RANGE_BOMBS = [1, 100];
+
 
 export const DEFAULT_LEVEL = 'easy';
