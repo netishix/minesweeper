@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const staticPath = __dirname + '/../dist';
 
-app.set('port', (process.env.EX_FRONT_ANGULAR_HTTP_PORT || 4200));
+app.set('port', (process.env.PORT || 3000));
 
 app.use(express.static(staticPath));
 
