@@ -48,12 +48,19 @@ manually configure the board by selecting the grid's size ```N```x```M``` and th
 The player can resume an active game by choosing it in the main menu and clicking on the ```resume``` button. Additionally, the player can view all the finished games stats and inspect a game board 
 by clicking in the ```inspect``` button.
 
+## Linting
+
+Linting for this project is provided by TSLint, the default linter for Angular. To lint the project run ```npm run lint```
+
 ## Versioning
+
 This repository is versioned using [SemVer (Semantic Versioning)](https://semver.org/) and commits are formatted by using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Testing
 
 Tests are written with ```Jasmine``` and ```Karma```. At the moment there are few unit tests. Initial testing was focused on the core game components such as ```Game```, ```Board``` and ```Cell``` models.
+
+To run all the available tests run ```npm run test```
 
 ## Author
 
