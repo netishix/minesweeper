@@ -36,12 +36,23 @@ export class StatsComponent implements OnInit {
 
   ngOnInit(): void {
     this.finishedGames = this.activatedRoute.snapshot.data.finishedGames;
-    this.finishedGames = this.sortFinishedGamesByAsc();
+    this.finishedGames = this.sortGamesByBestResult();
     this.title.setTitle('Minesweeper - Statistics');
   }
 
-  public sortFinishedGamesByAsc(): Game[] {
-    return this.finishedGames.sort((a,b) => new Date(b.stats.startDate).getTime() - new Date(a.stats.startDate).getTime());
+  public sortGamesByBestResult(): Game[] {
+    const levelMapping = {
+      hard: 1,
+      medium: 2,
+      easy: 3,
+      custom: 4,
+    };
+    return this.finishedGames.sort((a,b) => {
+      const wonResult = ((a.stats.won === b.stats.won) ? 0 : (a.stats.won ? -1 : 1));
+      const levelResult = levelMapping[a.settings.level] - levelMapping[b.settings.level];
+      const timeSpentResult = a.stats.timeSpent - b.stats.timeSpent;
+      return wonResult || levelResult || timeSpentResult;
+    });
   }
 
   public inspectGame(gameId: string): void {

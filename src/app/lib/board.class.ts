@@ -8,11 +8,13 @@ export class Board {
   public bombs!: number;
   public bombsLeft!: number
   public grid!: Cell[][];
+  public onOpenCell!: EventEmitter<boolean>
   public onFinish!: EventEmitter<boolean>
 
   constructor() {}
 
   public init(settings: {size: {x: number, y: number}, bombs: number}) {
+    this.onOpenCell = new EventEmitter<boolean>();
     this.onFinish = new EventEmitter<boolean>();
     this.grid = [];
     this.size = settings.size;
@@ -24,6 +26,7 @@ export class Board {
 
   public static createFromJSON(jsonBoard: JSONBoard): Board {
     const board = new Board();
+    board.onOpenCell = new EventEmitter<boolean>();
     board.onFinish = new EventEmitter<boolean>();
     board.size = jsonBoard.size;
     board.bombs = jsonBoard.bombs;
@@ -41,7 +44,9 @@ export class Board {
 
   public toJSON(): JSONBoard {
     const board: any = {...this};
-    delete board.onFinish; // Delete result event emitter
+    // Delete event emitters
+    delete board.onOpenCell;
+    delete board.onFinish;
     return board;
   }
 
@@ -117,9 +122,9 @@ export class Board {
   }
 
   public openCell(cell: Cell): void {
-    if (cell.hidden) {
+    if (cell.hidden && cell.guess === null) {
+      this.onOpenCell.emit();
       cell.hidden = false;
-      cell.guess = null;
       if (cell.hasBomb) {
         cell.bombExploded = true;
         this.finish(false);

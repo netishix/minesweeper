@@ -27,7 +27,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscribeToBoardResult();
+    this.subscribeToBoardEvents();
   }
 
   public onCellClick(event: Event, cell: Cell) {
@@ -36,19 +36,22 @@ export class BoardComponent implements OnInit {
     if (event.type === 'click') {
       moveType = 'open';
       this.board.onMove(moveType, cell);
-      this.onOpenCell.emit();
     } else if (event.type === 'contextmenu') {
       moveType = 'guess';
       this.board.onMove(moveType, cell);
     }
   }
 
-  public subscribeToBoardResult() {
+  public subscribeToBoardEvents() {
+    this.board.onOpenCell
+      .subscribe((won) => {
+        this.onOpenCell.emit();
+      })
     this.board.onFinish
       .subscribe((won) => {
         this.onFinish.emit(won);
         this.board.revealBoard();
-      })
+      });
   }
 
 }
