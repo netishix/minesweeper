@@ -2,14 +2,14 @@
   <div class="row flex-nowrap">
     <div class="col-12">
       <div id="game-header" class="row mb-5">
-        <div class="col-12 offset-md-3 col-md-6">
-          <div class="row">
+        <div class="col-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4">
+          <div class="row mb-4">
             <div id="bombs-left" class="col-3 text-center" [ngClass]="{'finished': game.stats.finished}">
               <p>Bombs left</p>
               <h2 class="text-danger font-weight-bold">{{game.board.bombsLeft}}</h2>
             </div>
             <div class="col-6 text-center">
-              <h2>
+              <h1>
                 <span *ngIf="!game.stats.finished && !game.stats.won">
                   <fa-icon *ngIf="!isEmojiFaceBlinking" class="text-primary" [icon]="icons.faSmileBeam"></fa-icon>
                   <fa-icon *ngIf="isEmojiFaceBlinking" class="text-warning" [icon]="icons.faFlushed"></fa-icon>
@@ -20,11 +20,11 @@
                 <span *ngIf="game.stats.finished && !game.stats.won" class="text-danger">
                   GAME <fa-icon [icon]="icons.faSadCry"></fa-icon>VER
                 </span>
-              </h2>
+              </h1>
             </div>
             <div id="time-spent" class="col-3 text-center" [ngClass]="{'finished': game.stats.finished}">
               <p>Time spent</p>
-              <h2 class="text-danger font-weight-bold">{{game.stats.timeSpent}}</h2>
+              <h2 class="text-danger font-weight-bold">{{game.stats.timeSpent | timeSpent}}</h2>
             </div>
           </div>
           <div class="row">
