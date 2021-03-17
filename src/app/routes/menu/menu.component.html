@@ -50,7 +50,7 @@
                 <th>Size</th>
                 <th>Bombs</th>
                 <th>Started at</th>
-                <th>Time spent</th>
+                <th>Time spent (mm:ss)</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -60,8 +60,8 @@
                 <td>{{game.settings.level}}</td>
                 <td>{{game.settings.xCells}}x{{game.settings.yCells}}</td>
                 <td>{{game.settings.totalBombs}}</td>
-                <td>{{game.stats.startDate | date: 'MM/dd/yyyy HH:mm a'}} </td>
-                <td>{{game.stats.timeSpent < 60 ? game.stats.timeSpent + ' seconds' : (game.stats.timeSpent/60).toFixed(0) + ' minutes'}}</td>
+                <td>{{game.stats.startDate | date: 'MM/dd/yyyy hh:mm a'}} </td>
+                <td>{{game.stats.timeSpent | timeSpent}}</td>
                 <td>
                   <div class="btn-group">
                     <button class="btn btn-success btn-sm" ngbTooltip="Resume" (click)="resumeGame(game.id)">

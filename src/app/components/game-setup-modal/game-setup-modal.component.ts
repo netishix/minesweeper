@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { FormBuilder, Validators } from "@angular/forms";
 import { FormInterface } from "../../interfaces/form.interface";
-import { DEFAULT_LEVEL, LEVELS } from "../../constants";
+import {ALLOWED_RANGE_BOMBS, ALLOWED_RANGE_CELLS, DEFAULT_LEVEL, LEVELS} from "../../constants";
 import { Game } from "../../lib/game.class";
 import { DatasourceService } from "../../services/datasource.service";
 import { Router } from "@angular/router";
@@ -14,6 +14,10 @@ import { Router } from "@angular/router";
 })
 export class GameSetupModalComponent implements OnInit {
 
+  public constants: {
+    ALLOWED_RANGE_CELLS: number[],
+    ALLOWED_RANGE_BOMBS: number[]
+  };
   public form: FormInterface;
 
   constructor(
@@ -22,22 +26,24 @@ export class GameSetupModalComponent implements OnInit {
     public datasourceService: DatasourceService,
     public router: Router
   ) {
+    this.constants = {
+      ALLOWED_RANGE_CELLS,
+      ALLOWED_RANGE_BOMBS
+    }
     const levelSelectOptions = Object.keys(LEVELS).map((levelName) => {
       return {name: LEVELS[levelName as keyof typeof LEVELS].label, value: levelName};
     });
     this.form = {
-      errors: {},
+      isSubmitted: false,
       selectOptions: {
         level: levelSelectOptions
       },
       fg: this.formBuilder.group({
-        level: [null, Validators.required],
-        xCells: [null, Validators.required],
-        yCells: [null, Validators.required],
-        totalBombs: [null, Validators.required],
+        level: [null, [Validators.required]],
+        xCells: [null, [Validators.required, Validators.min(ALLOWED_RANGE_CELLS[0]), Validators.max(ALLOWED_RANGE_CELLS[1])]],
+        yCells: [null, [Validators.required, Validators.min(ALLOWED_RANGE_CELLS[0]), Validators.max(ALLOWED_RANGE_CELLS[1])]],
+        totalBombs: [null, [Validators.required, Validators.min(ALLOWED_RANGE_BOMBS[0]), Validators.max(ALLOWED_RANGE_BOMBS[1])]],
       }),
-      isLoading: false,
-      isSubmitted: false,
     }
   }
 
@@ -81,9 +87,12 @@ export class GameSetupModalComponent implements OnInit {
   }
 
   public async submitForm(): Promise<void> {
-    const createdGame = await this.createNewGame();
-    this.activeModal.close('Game was created successfully.');
-    await this.router.navigate(['game', createdGame.id]);
+    this.form.isSubmitted = true;
+    if (this.form.fg.valid) {
+      const createdGame = await this.createNewGame();
+      this.activeModal.close('Game was created successfully.');
+      await this.router.navigate(['game', createdGame.id]);
+    }
   }
 
 }

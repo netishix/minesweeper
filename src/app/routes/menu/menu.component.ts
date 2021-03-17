@@ -7,7 +7,8 @@ import { GameSetupModalComponent } from "../../components/game-setup-modal/game-
 import { ActivatedRoute, Router } from "@angular/router";
 import { Game } from "../../lib/game.class";
 import { DatasourceService } from "../../services/datasource.service";
-import {ModalConfirmationComponent} from "../../components/modal-confirmation/modal-confirmation.component";
+import { ModalConfirmationComponent } from "../../components/modal-confirmation/modal-confirmation.component";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-menu',
@@ -24,6 +25,7 @@ export class MenuComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public datasourceService: DatasourceService,
     public router: Router,
+    public title: Title
   ) {
     this.icons = {
       faBomb,
@@ -39,6 +41,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.activeGames = this.activatedRoute.snapshot.data.activeGames;
+    this.title.setTitle('Minesweeper - Main menu');
   }
 
   public newGame(): void {

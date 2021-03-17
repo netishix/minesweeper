@@ -12,6 +12,7 @@ import {
   faTachometerAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { DatasourceService } from "../../services/datasource.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-game',
@@ -29,6 +30,7 @@ export class GameComponent implements OnInit, OnDestroy {
     public activatedRoute: ActivatedRoute,
     public datasourceService: DatasourceService,
     public router: Router,
+    public title: Title
   ) {
     this.icons = {
       faSmileBeam,
@@ -44,6 +46,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.game = this.activatedRoute.snapshot.data.game;
+    this.title.setTitle(`Game - ${this.game.settings.xCells}x${this.game.settings.yCells} - ${this.game.settings.totalBombs} bombs`);
     if (!this.game.stats.finished) {
       this.resumeGame();
     }
