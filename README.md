@@ -26,7 +26,7 @@ The game is developed by using some core models and their matching interfaces in
 * ```JSONGame```: Interface - An interface to structure ```Game``` for persistence purposes.
 * ```Board```: Class - Manages the CORE game logic such as creating and filling the grid with ```Cell```s, placing the bombs, counting nearby bombs, and handling moves.
 * ```JSONBoard```: Interface - An interface to structure ```Board``` for persistence purposes.
-* ```Cell```: Class - Holds the state of each cell. Eg. If the cell, has a bomb or if it was revealed.
+* ```Cell```: Class - Holds the state of each cell. E.g. If the cell has a bomb or if it was revealed.
 * ```JSONCell```: Interface - An interface to structure ```Cell``` for persistence purposes.
 
 These models are used as a reference by 2 Angular components to render the game:
@@ -49,7 +49,7 @@ The player can resume an active game by choosing it in the main menu and clickin
 by clicking in the ```inspect``` button.
 
 ## Versioning
-This repository is versioned using [SemVer (Semantic Versioning)](https://semver.org/) and commits are formatted by using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+This repository is versioned using [SemVer (Semantic Versioning)](https://semver.org/) and commits are formatted by using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Testing
 
