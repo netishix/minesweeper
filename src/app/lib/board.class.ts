@@ -13,7 +13,7 @@ export class Board {
 
   constructor() {}
 
-  public init(settings: {size: {x: number, y: number}, bombs: number}) {
+  public init(settings: {size: Board['size'], bombs: Board['bombs']}): void {
     this.onOpenCell = new EventEmitter<boolean>();
     this.onFinish = new EventEmitter<boolean>();
     this.grid = [];

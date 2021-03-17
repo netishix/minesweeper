@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { FinishedGamesResolverService } from './finished-games-resolver.service';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('FinishedGamesResolverService', () => {
   let service: FinishedGamesResolverService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ RouterTestingModule ]
+    });
     service = TestBed.inject(FinishedGamesResolverService);
   });
 
