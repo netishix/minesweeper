@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <div class="row">
@@ -18,7 +18,7 @@
               <th>Won</th>
               <th>Started at</th>
               <th>Ended at</th>
-              <th>Time spent</th>
+              <th>Time spent (mm:ss)</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -29,9 +29,9 @@
               <td>{{game.settings.xCells}}x{{game.settings.yCells}}</td>
               <td>{{game.settings.totalBombs}}</td>
               <td><fa-icon [icon]="game.stats.won ? icons.faCheckCircle : icons.faTimesCircle" [ngClass]="game.stats.won ? 'text-success' : 'text-danger'"></fa-icon></td>
-              <td>{{game.stats.startDate | date: 'MM/dd/yyyy HH:mm a'}} </td>
-              <td>{{game.stats.endDate | date: 'MM/dd/yyyy HH:mm a'}} </td>
-              <td>{{game.stats.timeSpent < 60 ? game.stats.timeSpent + ' seconds' : (game.stats.timeSpent/60).toFixed(0) + ' minutes'}}</td>
+              <td>{{game.stats.startDate | date: 'MM/dd/yyyy hh:mm a'}} </td>
+              <td>{{game.stats.endDate | date: 'MM/dd/yyyy hh:mm a'}} </td>
+              <td>{{game.stats.timeSpent | timeSpent}}</td>
               <td>
                 <div class="btn-group">
                   <button class="btn btn-primary btn-sm" ngbTooltip="Inspect" (click)="inspectGame(game.id)">

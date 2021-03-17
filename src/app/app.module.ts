@@ -18,6 +18,7 @@ import { GameSetupModalComponent } from './components/game-setup-modal/game-setu
 import { ModalConfirmationComponent } from './components/modal-confirmation/modal-confirmation.component';
 import { BoardComponent } from './components/board/board.component';
 import { FaqComponent } from './routes/faq/faq.component';
+import { TimeSpentPipe } from './pipes/time-spent.pipe';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { FaqComponent } from './routes/faq/faq.component';
     ModalConfirmationComponent,
     BoardComponent,
     FaqComponent,
+    TimeSpentPipe,
   ],
   imports: [
     BrowserModule,

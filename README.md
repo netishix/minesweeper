@@ -1,4 +1,5 @@
-#Minesweeper
+# Minesweeper
+
 This repository holds a version of the Minesweeper game built with ```Typescript```, ```Angular 11```, ```Bootstrap 4```, ```FontAwesome``` and ```SaSS```. The built bundle is served statically with a ```Express``` server.
 
 ## Installation
@@ -19,15 +20,19 @@ The app contains the following routes:
 
 ## Game CORE components
 
-The game is developed by using some core models and their matching interfaces. For instance:
+The game is developed by using some core models and their matching interfaces in order to track and manage the game state. For instance:
                                
 * ```Game```: Class - Holds the game initial settings, statistics and a reference to the main ```Board```.
 * ```JSONGame```: Interface - An interface to structure ```Game``` for persistence purposes.
 * ```Board```: Class - Manages the CORE game logic such as creating and filling the grid with ```Cell```s, placing the bombs, counting nearby bombs, and handling moves.
 * ```JSONBoard```: Interface - An interface to structure ```Board``` for persistence purposes.
-* ```Cell```: Class - Holds the state of each cell. Eg. If the cell, has a bomb or if it was revealed.
-* ```CellBoard```: Interface - An interface to structure ```Cell``` for persistence purposes.
+* ```Cell```: Class - Holds the state of each cell. E.g. If the cell has a bomb or if it was revealed.
+* ```JSONCell```: Interface - An interface to structure ```Cell``` for persistence purposes.
 
+These models are used as a reference by 2 Angular components to render the game:
+
+* ```GameComponent```
+* ```BoardComponent ```
 
 ## Main features
 
@@ -44,7 +49,7 @@ The player can resume an active game by choosing it in the main menu and clickin
 by clicking in the ```inspect``` button.
 
 ## Versioning
-This repository is versioned using [SemVer (Semantic Versioning)](https://semver.org/) and commits are formatted by using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+This repository is versioned using [SemVer (Semantic Versioning)](https://semver.org/) and commits are formatted by using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ## Testing
 

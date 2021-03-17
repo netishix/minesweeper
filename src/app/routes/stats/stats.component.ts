@@ -7,6 +7,7 @@ import { faCheckCircle, faEye, faTimesCircle, faTrash } from "@fortawesome/free-
 import { ModalConfirmationComponent } from "../../components/modal-confirmation/modal-confirmation.component";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { GameSetupModalComponent } from "../../components/game-setup-modal/game-setup-modal.component";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-stats',
@@ -23,6 +24,7 @@ export class StatsComponent implements OnInit {
     public router: Router,
     public datasourceService: DatasourceService,
     public modalService: NgbModal,
+    public title: Title,
   ) {
     this.icons = {
       faEye,
@@ -35,6 +37,7 @@ export class StatsComponent implements OnInit {
   ngOnInit(): void {
     this.finishedGames = this.activatedRoute.snapshot.data.finishedGames;
     this.finishedGames = this.sortFinishedGamesByAsc();
+    this.title.setTitle('Minesweeper - Statistics');
   }
 
   public sortFinishedGamesByAsc(): Game[] {
