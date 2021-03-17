@@ -23,7 +23,7 @@ export class Game {
 
   constructor() {}
 
-  public init(settings: any) {
+  public init(settings: Game['settings']): void {
     this.id = uuidv1()
     this.settings = settings;
     const boardSettings = {

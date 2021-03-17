@@ -94,7 +94,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles/global.sass"
             ],
             "scripts": []
           }
