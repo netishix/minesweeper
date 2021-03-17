@@ -2,6 +2,8 @@
 
 This repository holds a version of the Minesweeper game built with ```Typescript```, ```Angular 11```, ```Bootstrap 4```, ```FontAwesome``` and ```SaSS```. The built bundle is served statically with a ```Express``` server.
 
+Play now! Check the [live demo](https://netishix-minesweeper.herokuapp.com/).
+
 ## Installation
 
 1. Install dependencies with npm. ```npm install```
