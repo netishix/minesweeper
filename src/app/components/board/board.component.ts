@@ -50,7 +50,7 @@ export class BoardComponent implements OnInit {
     this.board.onFinish
       .subscribe((won) => {
         this.onFinish.emit(won);
-        this.board.revealBoard();
+        this.board.revealBombs();
       });
   }
 

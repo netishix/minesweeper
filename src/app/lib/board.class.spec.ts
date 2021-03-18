@@ -407,13 +407,15 @@ describe('Board', () => {
 
     });
 
-    describe('revealBoard', () => {
+    describe('revealBombs', () => {
 
-      it('should reveal the all the cells in the board', () => {
-        board.revealBoard();
+      it('should reveal the all the bombs in the board', () => {
+        board.revealBombs();
         board.grid.forEach((row) => {
           row.forEach((cell) => {
-            expect(cell.hidden).toEqual(false);
+            if (cell.hasBomb) {
+              expect(cell.hidden).toEqual(false);
+            }
           });
         });
       });
@@ -445,12 +447,12 @@ describe('Board', () => {
 
       it('should finish a board', () => {
         const won = true;
-        const revealBoardSpy = spyOn(board, 'revealBoard');
-        revealBoardSpy.and.returnValue();
+        const revealBombsSpy = spyOn(board, 'revealBombs');
+        revealBombsSpy.and.returnValue();
         const onFinishEmitSpy = spyOn(board.onFinish, 'emit');
         onFinishEmitSpy.and.returnValue();
         board.finish(won);
-        expect(revealBoardSpy).toHaveBeenCalledTimes(1);
+        expect(revealBombsSpy).toHaveBeenCalledTimes(1);
         expect(onFinishEmitSpy).toHaveBeenCalledTimes(1);
         expect(onFinishEmitSpy).toHaveBeenCalledWith(won);
       });

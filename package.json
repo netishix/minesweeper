@@ -1,6 +1,6 @@
 {
   "name": "minesweeper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "node ./express/server.js",
