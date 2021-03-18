@@ -21,7 +21,7 @@ export class Board {
     this.bombs = settings.bombs;
     this.bombsLeft = settings.bombs;
     this.createGrid(settings.size.x, settings.size.y);
-    this.setupCells();
+    this.fillGrid();
   }
 
   public static createFromJSON(jsonBoard: JSONBoard): Board {
@@ -62,7 +62,7 @@ export class Board {
     }
   }
 
-  public setupCells(): void {
+  public fillGrid(): void {
     this.placeBombs();
     this.calculateNearbyBombs();
   }

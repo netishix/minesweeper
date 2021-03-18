@@ -1,4 +1,4 @@
-import { Board }  from "../../../src/app/lib/board.class";
+import { Board }  from "../../src/app/lib/board.class";
 
 const BoardMock: Board = new Board();
 BoardMock.init({
