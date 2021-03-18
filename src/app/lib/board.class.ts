@@ -4,6 +4,7 @@ import { EventEmitter } from "@angular/core";
 
 export class Board {
 
+  public finished!: boolean;
   public size!: {x: number, y: number};
   public bombs!: number;
   public bombsLeft!: number
@@ -14,6 +15,7 @@ export class Board {
   constructor() {}
 
   public init(settings: {size: Board['size'], bombs: Board['bombs']}): void {
+    this.finished = false;
     this.onOpenCell = new EventEmitter<boolean>();
     this.onFinish = new EventEmitter<boolean>();
     this.grid = [];
@@ -26,6 +28,7 @@ export class Board {
 
   public static createFromJSON(jsonBoard: JSONBoard): Board {
     const board = new Board();
+    board.finished = false;
     board.onOpenCell = new EventEmitter<boolean>();
     board.onFinish = new EventEmitter<boolean>();
     board.size = jsonBoard.size;
@@ -159,10 +162,12 @@ export class Board {
     }
   }
 
-  public revealBoard(): void {
+  public revealBombs(): void {
     this.grid.forEach((row) => {
       row.forEach((cell) => {
-        cell.hidden = false;
+        if (cell.hasBomb) {
+          cell.hidden = false;
+        }
       })
     });
   }
@@ -180,7 +185,8 @@ export class Board {
   }
 
   public finish(won: boolean): void {
-    this.revealBoard();
+    this.finished = true;
+    this.revealBombs();
     this.onFinish.emit(won);
   }
 

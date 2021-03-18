@@ -1,4 +1,4 @@
-<div id="board">
+<div id="board" [ngClass]="{'disabled': board.finished}">
   <div class="board-row" *ngFor="let row of board.grid">
     <div class="board-cell" *ngFor="let cell of row" [ngClass]="cell.hidden ? 'hidden' : 'visible'"  (contextmenu)="onCellClick($event, cell)" (click)="onCellClick($event, cell)">
       <ng-container *ngIf="cell.hidden">
