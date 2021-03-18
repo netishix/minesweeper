@@ -1,12 +1,12 @@
 {
   "name": "minesweeper",
-  "version": "0.3.4",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "node ./express/server.js",
     "dev": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "build": "ng build --prod",
+    "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

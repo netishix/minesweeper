@@ -1,4 +1,4 @@
-import {Game} from "../../../src/app/lib/game.class";
+import {Game} from "../../src/app/lib/game.class";
 
 const GameMock: Game = new Game();
 GameMock.init({
