@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameComponent } from './game.component';
 import {ActivatedRoute} from "@angular/router";
-import {GameMock} from "../../../../test/unit/mocks/game.mock";
+import {GameMock} from "../../../../test/mocks/game.mock";
 import {RouterTestingModule} from "@angular/router/testing";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {TimeSpentPipe} from "../../pipes/time-spent.pipe";

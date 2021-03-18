@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BoardComponent } from './board.component';
-import { BoardMock } from "../../../../test/unit/mocks/board.mock";
+import { BoardMock } from "../../../../test/mocks/board.mock";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 describe('BoardComponent', () => {
